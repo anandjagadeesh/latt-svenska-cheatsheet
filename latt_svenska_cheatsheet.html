@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anand's Lätt Svenska Cheatsheet</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue: #002855;
+    --yellow: #E87722;
+    --dark: #003A3C;
+    --light: #FFFFFF;
+    --card: #FFFFFF;
+    --accent: #861F41;
+    --muted: #545454;
+    --border: #545454;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--light);
+    color: var(--dark);
+    min-height: 100vh;
+  }
+
+  header {
+    background: var(--blue);
+    color: white;
+    padding: 40px 40px 30px;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '🇸🇪';
+    position: absolute;
+    right: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 72px;
+    opacity: 0.25;
+  }
+  header::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 5px;
+    background: var(--yellow);
+  }
+  .header-tag {
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--yellow);
+    margin-bottom: 8px;
+  }
+  .header-tag a {
+    color: var(--yellow);
+    text-decoration: none;
+  }
+  header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -1px;
+  }
+  header p {
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 300;
+    opacity: 0.8;
+    max-width: 500px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    padding: 24px;
+  }
+
+  .card {
+    background: var(--card);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    page-break-inside: avoid;
+  }
+  .card.span2 { grid-column: span 2; }
+  .card.span3 { grid-column: span 3; }
+
+  .card-header {
+    padding: 12px 16px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+  .card-header.blue { background: var(--blue); color: white; }
+  .card-header.yellow { background: var(--yellow); color: var(--dark); }
+  .card-header.red { background: var(--accent); color: white; }
+  .card-header.dark { background: var(--dark); color: white; }
+  .card-header.teal { background: #1b7a6e; color: white; }
+  .card-header.purple { background: #5c4f8a; color: white; }
+  .card-header.orange { background: #d4622a; color: white; }
+
+  .card-body { padding: 14px 16px; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  td { padding: 5px 6px; border-bottom: 1px solid #f0ece4; vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  td:first-child { font-weight: 500; color: var(--blue); white-space: nowrap; width: 45%; }
+  td:last-child { color: #444; }
+
+  .pills { display: flex; flex-wrap: wrap; gap: 6px; padding: 12px 16px; }
+  .pill {
+    background: #f0ece4;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 4px 12px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+  .pill span { color: var(--blue); margin-right: 4px; }
+  .pill em { color: #888; font-style: normal; font-size: 11px; }
+
+  .rule-box {
+    padding: 12px 16px;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  .rule-box .rule {
+    background: #f5f0e8;
+    border-left: 3px solid var(--blue);
+    padding: 8px 12px;
+    border-radius: 0 6px 6px 0;
+    margin-bottom: 8px;
+    font-size: 13px;
+  }
+  .rule-box .rule strong { color: var(--blue); }
+  .rule-box .example {
+    font-style: italic;
+    color: #555;
+    font-size: 12px;
+    margin-top: 3px;
+  }
+  .rule-box .bad { color: var(--accent); text-decoration: line-through; }
+  .rule-box .good { color: #1b7a6e; font-weight: 500; }
+
+  .tip {
+    background: var(--yellow);
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin: 10px 16px 14px;
+    font-size: 12.5px;
+    font-weight: 500;
+    color: var(--dark);
+  }
+  .tip::before { content: '💡 '; }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+  .two-col > div { padding: 10px 14px; }
+  .two-col > div:first-child { border-right: 1px solid var(--border); }
+  .col-label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+    font-weight: 500;
+  }
+
+  .comp-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 0;
+    border-bottom: 1px solid #f0ece4;
+    font-size: 13px;
+  }
+  .comp-row:last-child { border-bottom: none; }
+  .comp-base { color: var(--blue); font-weight: 500; width: 80px; }
+  .arrow { color: var(--muted); font-size: 11px; }
+  .comp-more { color: #1b7a6e; font-weight: 500; width: 100px; }
+  .comp-en { color: #777; font-size: 11px; }
+
+  .weather-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+  .weather-item {
+    padding: 6px 14px;
+    border-bottom: 1px solid #f0ece4;
+    font-size: 13px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+  .weather-item:nth-child(odd) { border-right: 1px solid var(--border); }
+  .weather-sv { font-weight: 500; color: var(--blue); }
+  .weather-en { color: #666; font-size: 11px; }
+
+  .star-word {
+    background: linear-gradient(135deg, var(--blue), #004f80);
+    color: white;
+    margin: 0 16px 16px;
+    border-radius: 10px;
+    padding: 14px 16px;
+    text-align: center;
+  }
+  .star-word .word {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--yellow);
+  }
+  .star-word .meaning { font-size: 12px; opacity: 0.85; margin-top: 4px; }
+  .star-word .example { font-style: italic; font-size: 11px; opacity: 0.7; margin-top: 6px; }
+
+  footer {
+    background: var(--dark);
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    padding: 16px;
+    font-size: 11px;
+    letter-spacing: 1px;
+  }
+  footer strong { color: var(--yellow); }
+  footer a {
+    color: var(--yellow);
+    text-decoration: none;
+  }
+
+  @media print {
+    body { background: white; }
+    .grid { padding: 12px; gap: 10px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-tag"><a href='https://anandj.xyz/'>Anand's</a></div>
+  <h1>Lätt Svenska Cheatsheet</h1>
+  <p>(Almost) All words you need to speak naturally and fluently in Easy Swedish such as sentence rules, connectors, adjectives, weather & more.</p>
+</header>
+
+<div class="grid">
+  <div class="card span3">
+    <div class="card-header dark">The Golden Rules of Swedish Sentence Structure</div>
+    <div class="rule-box">
+      <div class="rule">
+        <strong>Rule 1: Basic Order of Subject → Verb → Object</strong>
+        <div class="example">Jag dricker kaffe. &nbsp;|&nbsp; Hon läser en bok. &nbsp;|&nbsp; Vi äter middag.</div>
+      </div>
+      <div class="rule">
+        <strong>Rule 2: The V2 Rule: Verb always comes 2nd, no matter what starts the sentence.</strong>
+        <div class="example">Idag <u>äter</u> jag lunch. &nbsp;|&nbsp; Nu <u>går</u> vi hem. &nbsp;|&nbsp; Imorgon <u>reser</u> hon.</div>
+      </div>
+      <div class="rule">
+        <strong>Rule 3: Keep It Short. Split long ideas into two sentences.</strong>
+        <div class="example"><span class="bad">Eftersom det regnar ute så stannar jag hemma idag.</span><br><span class="good">Det regnar ute. Jag stannar hemma.</span></div>
+      </div>
+      <div class="rule">
+        <strong>Rule 4: Use "man" instead of passive voice to sound natural.</strong>
+        <div class="example">Man äter middag klockan sex. &nbsp;|&nbsp; Man säger inte så.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header blue">Adding Ideas</div>
+    <div class="card-body">
+      <table>
+        <tr><td>och</td><td>and</td></tr>
+        <tr><td>också</td><td>also / too</td></tr>
+        <tr><td>dessutom</td><td>furthermore</td></tr>
+        <tr><td>även</td><td>as well</td></tr>
+        <tr><td>samt</td><td>as well as</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header red">Showing Contrast</div>
+    <div class="card-body">
+      <table>
+        <tr><td>men</td><td>but</td></tr>
+        <tr><td>dock</td><td>however</td></tr>
+        <tr><td>däremot</td><td>on the other hand</td></tr>
+        <tr><td>ändå</td><td>still / anyway</td></tr>
+        <tr><td>fast / fastän</td><td>although</td></tr>
+        <tr><td>även om</td><td>even if</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header teal">Cause & Reason</div>
+    <div class="card-body">
+      <table>
+        <tr><td>för att</td><td>because / in order to</td></tr>
+        <tr><td>eftersom</td><td>since / because</td></tr>
+        <tr><td>därför att</td><td>because</td></tr>
+        <tr><td>alltså</td><td>so / therefore</td></tr>
+        <tr><td>därför</td><td>that's why</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header purple">Time & Order</div>
+    <div class="card-body">
+      <table>
+        <tr><td>sedan / sen</td><td>then / afterwards</td></tr>
+        <tr><td>först</td><td>first</td></tr>
+        <tr><td>slutligen</td><td>finally</td></tr>
+        <tr><td>när</td><td>when</td></tr>
+        <tr><td>medan</td><td>while</td></tr>
+        <tr><td>innan</td><td>before</td></tr>
+        <tr><td>efter att</td><td>after</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header orange">Condition</div>
+    <div class="card-body">
+      <table>
+        <tr><td>om</td><td>if</td></tr>
+        <tr><td>annars</td><td>otherwise</td></tr>
+        <tr><td>ifall</td><td>in case</td></tr>
+        <tr><td>såvida inte</td><td>unless</td></tr>
+      </table>
+    </div>
+    <div class="card-header blue" style="margin-top:1px;">Choice</div>
+    <div class="card-body">
+      <table>
+        <tr><td>eller</td><td>or</td></tr>
+        <tr><td>antingen...eller</td><td>either...or</td></tr>
+        <tr><td>varken...eller</td><td>neither...nor</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header yellow">Your Core 7 Connectors</div>
+    <div class="pills">
+      <div class="pill"><span>och</span><em>and</em></div>
+      <div class="pill"><span>men</span><em>but</em></div>
+      <div class="pill"><span>eller</span><em>or</em></div>
+      <div class="pill"><span>för att</span><em>because</em></div>
+      <div class="pill"><span>eftersom</span><em>since</em></div>
+      <div class="pill"><span>sedan</span><em>then</em></div>
+      <div class="pill"><span>därför</span><em>that's why</em></div>
+    </div>
+    <div class="tip">Master these 7 and you can connect almost any sentence naturally!</div>
+  </div>
+
+  <div class="card span2">
+    <div class="card-header dark">Essential Adjectives</div>
+    <div class="two-col">
+      <div>
+        <div class="col-label">Swedish → English</div>
+        <table>
+          <tr><td>stor / liten</td><td>big / small</td></tr>
+          <tr><td>lång / kort</td><td>tall / short</td></tr>
+          <tr><td>snabb / långsam</td><td>fast / slow</td></tr>
+          <tr><td>varm / kall</td><td>warm / cold</td></tr>
+          <tr><td>bra / dålig</td><td>good / bad</td></tr>
+          <tr><td>lätt / svår</td><td>easy / hard</td></tr>
+          <tr><td>ny / gammal</td><td>new / old</td></tr>
+        </table>
+      </div>
+      <div>
+        <div class="col-label">Swedish → English</div>
+        <table>
+          <tr><td>rolig / tråkig</td><td>fun / boring</td></tr>
+          <tr><td>konstig</td><td>weird / strange</td></tr>
+          <tr><td>underbar</td><td>wonderful</td></tr>
+          <tr><td>viktig</td><td>important</td></tr>
+          <tr><td>trött</td><td>tired</td></tr>
+          <tr><td>hungrig</td><td>hungry</td></tr>
+          <tr><td>glad / ledsen</td><td>happy / sad</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header teal">Comparatives (add -are)</div>
+    <div class="card-body">
+      <div class="comp-row"><span class="comp-base">snabb</span><span class="arrow">→</span><span class="comp-more">snabbare</span><span class="comp-en">faster</span></div>
+      <div class="comp-row"><span class="comp-base">långsam</span><span class="arrow">→</span><span class="comp-more">långsammare</span><span class="comp-en">slower</span></div>
+      <div class="comp-row"><span class="comp-base">varm</span><span class="arrow">→</span><span class="comp-more">varmare</span><span class="comp-en">warmer</span></div>
+      <div class="comp-row"><span class="comp-base">kall</span><span class="arrow">→</span><span class="comp-more">kallare</span><span class="comp-en">colder</span></div>
+      <div class="comp-row"><span class="comp-base">bra</span><span class="arrow">→</span><span class="comp-more">bättre</span><span class="comp-en">better</span></div>
+      <div class="comp-row"><span class="comp-base">dålig</span><span class="arrow">→</span><span class="comp-more">sämre</span><span class="comp-en">worse</span></div>
+      <div class="comp-row"><span class="comp-base">stor</span><span class="arrow">→</span><span class="comp-more">större</span><span class="comp-en">bigger</span></div>
+    </div>
+  </div>
+
+  <div class="card span2">
+    <div class="card-header blue">Weather Words (Väder)</div>
+    <div class="weather-grid">
+      <div class="weather-item"><div><div class="weather-sv">solen skiner</div><div class="weather-en">the sun is shining</div></div></div>
+      <div class="weather-item"><div><div class="weather-sv">det regnar</div><div class="weather-en">it's raining</div></div></div>
+      <div class="weather-item"><div><div class="weather-sv">det snöar</div><div class="weather-en">it's snowing</div></div></div>
+      <div class="weather-item"><div><div class="weather-sv">det är molnigt</div><div class="weather-en">it's cloudy</div></div></div>
+      <div class="weather-item"><div><div class="weather-sv">det blåser</div><div class="weather-en">it's windy</div></div></div>
+      <div class="weather-item"><div><div class="weather-sv">det är dimmigt</div><div class="weather-en">it's foggy</div></div></div>
+      <div class="weather-item"><div><div class="weather-sv">ett åskväder</div><div class="weather-en">a thunderstorm</div></div></div>
+      <div class="weather-item"><div><div class="weather-sv">lagom varmt</div><div class="weather-en">just right temperature</div></div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header yellow">The Most Swedish Word (Probably)</div>
+    <div style="height:10px;"></div>
+    <div class="star-word">
+      <div class="word">lagom</div>
+      <div class="meaning">not too much, not too little; just right</div>
+      <div class="example">"Det är lagom varmt idag."<br>(It's just the right temperature today.)</div>
+    </div>
+    <div class="tip">Use lagom wherever it sounds good and it will impress many native speakers.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header purple">Filler & Reaction Words</div>
+    <div class="card-body">
+      <table>
+        <tr><td>liksom / typ</td><td>like / you know</td></tr>
+        <tr><td>alltså</td><td>so / I mean</td></tr>
+        <tr><td>verkligen</td><td>really</td></tr>
+        <tr><td>absolut</td><td>absolutely</td></tr>
+        <tr><td>precis</td><td>exactly</td></tr>
+        <tr><td>visst</td><td>sure / of course</td></tr>
+        <tr><td>kanske</td><td>maybe</td></tr>
+        <tr><td>nästan</td><td>almost</td></tr>
+        <tr><td>bara</td><td>just / only</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header orange">Useful Sentence Starters</div>
+    <div class="card-body">
+      <table>
+        <tr><td>Jag vill...</td><td>I want to...</td></tr>
+        <tr><td>Kan du...?</td><td>Can you...?</td></tr>
+        <tr><td>Jag förstår inte.</td><td>I don't understand.</td></tr>
+        <tr><td>Vad betyder...?</td><td>What does ... mean?</td></tr>
+        <tr><td>Hur säger man...?</td><td>How do you say...?</td></tr>
+        <tr><td>Det handlar om...</td><td>It's about...</td></tr>
+        <tr><td>Jag tycker att...</td><td>I think that...</td></tr>
+        <tr><td>Det är...</td><td>It is...</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header teal">About / Around / Place Words</div>
+    <div class="card-body">
+      <table>
+        <tr><td>om</td><td>about</td></tr>
+        <tr><td>angående</td><td>regarding</td></tr>
+        <tr><td>ungefär</td><td>about / around (quantity)</td></tr>
+        <tr><td>runt</td><td>around (place)</td></tr>
+        <tr><td>nära</td><td>near</td></tr>
+        <tr><td>långt bort</td><td>far away</td></tr>
+        <tr><td>här / där</td><td>here / there</td></tr>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <strong><a href='https://anandj.xyz/'>Anand's</a> Lätt Svenska Cheatsheet</strong> &nbsp;·&nbsp; Keep sentences short · Always put the verb 2nd</footer>
+
+</body>
+</html>
